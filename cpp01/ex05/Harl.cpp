@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:08:29 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/01/16 13:09:13 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:44:23 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,20 @@ void   Harl::complain( std::string level )
 
 void    Harl::debug(void)
 {
-    std::cout << "debug" << std::endl;
+    std::cout << "i wish i have more blackhole days" << std::endl;
 }
 
 void    Harl::info(void)
 {
-    std::cout << "info" << std::endl;
+    std::cout << "we earn a lot of blackhole days from cpp pool" << std::endl;
 }
 
 void    Harl::warning(void)
 {
-    std::cout << "warning" << std::endl;
+    std::cout << "cuz we face new language i think we need more time" << std::endl;
 }
 
 void    Harl::error(void)
 {
-    std::cout << "error" << std::endl;
+    std::cout << "who can explained why cheaters cheat?" << std::endl;
 }
