@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:24:49 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/01/21 00:12:23 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/01/22 17:58:36 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ Fixed::Fixed()
     std::cout << "Default constructor called\n";
 }
 
-Fixed::Fixed(Fixed &obj)
+Fixed::Fixed(Fixed const &obj)
 {
     std::cout << "Copy constructor called\n";
     *this = obj;
 }
 
-Fixed &Fixed::operator=(Fixed &a)
+Fixed &Fixed::operator=(Fixed const &a)
 {
     std::cout << "Copy assignment operator called\n";
     _fixed_nb = a.getRawBits();

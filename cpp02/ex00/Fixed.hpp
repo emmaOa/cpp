@@ -9,8 +9,8 @@ class Fixed
         int	_fixed_nb;
 	public:
 		Fixed();
-		Fixed(Fixed &obj);
-		Fixed &operator=(Fixed &a);
+		Fixed(Fixed const &obj);
+		Fixed &operator=(Fixed const &a);
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
 		~Fixed(void);

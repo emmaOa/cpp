@@ -6,22 +6,21 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:24:29 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/01/22 14:53:05 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:56:29 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 
-int main( void ) {
-Fixed a;
-Fixed b( a );
-Fixed c;
+int main( void )
+{
+    ClapTrap c1("c1");
+    ClapTrap c2("c2");
+    ClapTrap c3("c3");
 
-c = b;
-
-std::cout << a.getRawBits() << std::endl;
-std::cout << b.getRawBits() << std::endl;
-std::cout << c.getRawBits() << std::endl;
-
-return 0;
+    c1.attack("c2");
+    c2.takeDamage(5);
+    c2.beRepaired(3);
+    c3.attack("c1");
+    
 }

@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:24:29 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/01/22 00:41:28 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/01/22 17:39:39 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main( void )
 	std::cout << a << std::endl;
 
 	std::cout << b << std::endl;
+
 	std::cout << Fixed::max( a, b ) << std::endl;
 	return 0;
 }
