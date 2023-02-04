@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:30:30 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/02/04 23:44:10 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:38:21 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,5 @@ int main()
     for (int j = 0; j < 10; j++) {
         delete animals[j];
     }
-    system("leaks Animal");
     return 0;
 }

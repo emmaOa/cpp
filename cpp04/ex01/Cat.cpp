@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:09:21 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/01/25 16:57:53 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/02/04 23:41:22 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ Cat ::Cat()
 Cat ::Cat(const Cat  &obj)
 {
     std::cout << "Cat Copy constructor called\n";
+    if (this != &obj) {
+        *_cat_brain = *(obj._cat_brain);
+    }
+    type = obj.type;
     *this = obj;
 }
 

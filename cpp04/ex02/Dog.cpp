@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:09:21 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/02/04 23:41:40 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:58:10 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Dog::Dog()
     std::cout << "Dog constructor called\n";
 }
 
-Dog::Dog(const Dog &obj)
+Dog::Dog(const Dog &obj) : Animal (obj)
 {
     std::cout << "Dog Copy constructor called\n";
     if (this != &obj) {

@@ -1,48 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:09:21 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/02/04 23:41:40 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:57:53 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 
-Dog::Dog()
+Cat ::Cat()
 {
-    this->type = "Dog";
-    this->_Dog_brain = new Brain();
-    std::cout << "Dog constructor called\n";
+    this->type = "Cat";
+    this->_cat_brain = new Brain();
+    std::cout << "Cat constructor called\n";
 }
 
-Dog::Dog(const Dog &obj)
+Cat ::Cat(const Cat  &obj) : Animal (obj)
 {
-    std::cout << "Dog Copy constructor called\n";
+    std::cout << "Cat Copy constructor called\n";
     if (this != &obj) {
-        *_Dog_brain = *(obj._Dog_brain);
+        *_cat_brain = *(obj._cat_brain);
     }
+    type = obj.type;
     *this = obj;
 }
 
-Dog &Dog::operator=(const Dog &a)
+Cat  &Cat::operator=(const Cat  &a)
 {
-    std::cout << "Dog Copy assignment operator called\n";
+    std::cout << "Cat Copy assignment operator called\n";
     type = a.type;
-    _Dog_brain = a._Dog_brain;
     return *this; 
 }
 
-Dog::~Dog()
+Cat ::~Cat ()
 {
-    delete _Dog_brain;
-    std::cout << "Dog destructor called\n";
+    delete _cat_brain;
+    std::cout << "Cat destructor called\n";
 }
 
-void Dog::makeSound(void)  const
+void Cat::makeSound(void) const
 {
-    std::cout << "The dog says: how how \n";
+    std::cout << "The Cat says: mew mew \n";
 }
