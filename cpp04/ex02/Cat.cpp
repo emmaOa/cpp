@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:09:21 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/01/25 16:57:53 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/02/05 01:11:19 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ Cat ::Cat()
     std::cout << "Cat constructor called\n";
 }
 
-Cat ::Cat(const Cat  &obj) : Animal (obj)
+Cat ::Cat(const Cat  &obj)
 {
     std::cout << "Cat Copy constructor called\n";
     if (this != &obj) {
-        *_cat_brain = *(obj._cat_brain);
+        _cat_brain = new Brain(*obj._cat_brain);
     }
     type = obj.type;
     *this = obj;
@@ -32,6 +32,10 @@ Cat ::Cat(const Cat  &obj) : Animal (obj)
 Cat  &Cat::operator=(const Cat  &a)
 {
     std::cout << "Cat Copy assignment operator called\n";
+    if (this != &a) {
+        delete _cat_brain;
+        _cat_brain = new Brain(*a._cat_brain);
+    }
     type = a.type;
     return *this; 
 }

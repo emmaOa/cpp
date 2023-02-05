@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:30:30 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/02/04 23:44:10 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/02/05 01:12:36 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,30 @@ int main()
     delete i;*/
     // system("leaks Animal");
 
-    Animal* animals[10];
-    int i = 0;
+    Dog basic;
 
-    while (i < 10)
     {
-        if (i < 5)
-            animals[i] = new Dog();
-        else
-            animals[i] = new Cat();
-        i++;
-    }
-    for (int j = 0; j < 10; j++) {
-       animals[j]->makeSound();
+        Dog tmp = basic;
     }
 
-    for (int j = 0; j < 10; j++) {
-        delete animals[j];
-    }
-    system("leaks Animal");
-    return 0;
+    // Animal* animals[10];
+    // int i = 0;
+
+    // while (i < 10)
+    // {
+    //     if (i < 5)
+    //         animals[i] = new Dog();
+    //     else
+    //         animals[i] = new Cat();
+    //     i++;
+    // }
+    // for (int j = 0; j < 10; j++) {
+    //    animals[j]->makeSound();
+    // }
+
+    // for (int j = 0; j < 10; j++) {
+    //     delete animals[j];
+    // }
+    // system("leaks Animal");
+    // return 0;
 }
