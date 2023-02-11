@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:18:37 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/02/11 17:46:36 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/02/11 18:15:27 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,20 @@ std::ostream &operator<<(std::ostream &ret, Bureaucrat &a)
     return ret;
 }
 
-void Bureaucrat::signForm(const Form &f)
+void Bureaucrat::signForm(const AForm &f)
 {
     if (f.geIs_signde() == true)
         std::cout << _name << " signde " << f.getName() << "\n";
     else
-       std::cout << _name << " couldn't sign " << f.getName() << " because grade required to sign is " << f.getGrade_sgn() << "\n"; 
+       std::cout << _name << " couldn't sign " << f.getName() << " cbecause grade required to sign it " << f.getGrade_sgn() << "\n"; 
+}
+
+void Bureaucrat::executeForm(AForm const & AForm)
+{
+    if (AForm.execute(*this) == true)
+        std::cout << _name << " executed " << AForm.getName() << std::endl;
+    else
+        std::cout << "not executed\n";
 }
 
 Bureaucrat::~Bureaucrat()

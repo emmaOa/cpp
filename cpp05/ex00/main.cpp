@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:18:33 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/02/07 18:59:59 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/02/10 23:57:03 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 int main()
 {
-    Bureaucrat b1("imane", 0);
-    std::cout << b1.getGrade() << "\n";
-     std::cout << b1.getName() << "\n";
-    b1.increment_b();
-    std::cout << b1.getGrade() << "\n";
-    b1.decrement_b();
-    std::cout << b1.getGrade() << "\n";
-    b1.decrement_b();
-    std::cout << b1.getGrade() << "\n";
-    std::cout << b1;
+    try{
+        Bureaucrat b1("imane", 150);
+        std::cout << b1.getGrade() << "\n";
+        std::cout << b1.getName() << "\n";
+        b1.increment_b();
+        std::cout << b1.getGrade() << "\n";
+        b1.decrement_b();
+        std::cout << b1.getGrade() << "\n";
+        b1.decrement_b();
+        std::cout << b1.getGrade() << "\n";
+        std::cout << b1;
+    }
+    catch(std::exception & e){
+        std::cerr << e.what();
+    }
 }
