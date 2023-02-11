@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 19:13:10 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/02/11 18:36:56 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/02/11 19:04:21 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,10 @@ AForm &AForm::operator=(const AForm &a)
     return *this; 
 }
 
-AForm::AForm(const AForm &obj)const char* AForm::GradeTooLowException::what() const throw()
+AForm::AForm(const AForm &obj) : _name(obj._name), _grade_sgn(obj._grade_sgn), _grade_exc(obj._grade_exc)
 {
-    return "Grade too low\n"; 
-}
-
-const char* AForm::GradeTooHighException::what() const throw()
-{
-    return "Grade too high\n"; 
-}
-{
-    std::cout << "AForm Copy constructor called\n";
-    *this = obj;
+    std::cout << "Form Copy constructor called\n";
+    *this = obj; 
 }
 
 AForm::AForm(const std::string name, const int grade_sgn, const int grade_exc) : _name(name), _grade_sgn(grade_sgn), _grade_exc(grade_exc)
