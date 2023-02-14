@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 18:08:08 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/02/12 20:08:52 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:53:31 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 Base::~Base()
 {
-    std::cout << "Base destructor called";
+    std::cout << "Base destructor called\n";
 }
 
 Base * generate(void)
@@ -81,7 +81,7 @@ void identify(Base& p)
     try{
         C& c = dynamic_cast<C &>(p);
         (void)c;
-        std::cout << "his type is A\n";
+        std::cout << "his type is C\n";
         return ;
     }
     catch(std::bad_cast &e){
@@ -90,7 +90,7 @@ void identify(Base& p)
     try{
         B& b = dynamic_cast<B &>(p);
         (void)b;
-        std::cout << "his type is A\n";
+        std::cout << "his type is B\n";
         return ;
     }
     catch(std::bad_cast &e){

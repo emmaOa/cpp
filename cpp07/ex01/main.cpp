@@ -5,26 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/12 18:26:19 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/02/13 19:52:56 by iouazzan         ###   ########.fr       */
+/*   Created: 2023/02/13 13:47:48 by iouazzan          #+#    #+#             */
+/*   Updated: 2023/02/13 21:47:03 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
+#include "Iter.hpp"
 
 int main()
 {
-    Base * p, * g;
-    Base * r = new C;
-    p = new B;
-    g = generate();
-    identify(g);    identify(*g);
-    identify(p);    identify(*p);
-    identify(r);    identify(*r);
-    delete g;
-    delete r;
-    delete p;
+    int a[5] = { 10, 50, 30, 40, 20 };
+    iter(a, 5, f);
 }
