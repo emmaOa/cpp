@@ -14,6 +14,7 @@ class Array
         Array(const Array &obj);
         Array &operator=(const Array &a);
         T &operator[](int i);
+        const T &operator[](int i) const;
         int size() const;
         ~Array();
 };

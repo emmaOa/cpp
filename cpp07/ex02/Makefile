@@ -3,7 +3,7 @@ MANDATORY=  main.cpp
 CC=cc
 FLAGS= -Wall -Werror -Wextra -std=c++98
 DEBUG=-fsanitize=address -g
-NAME= Array
+NAME= Arrays
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:50:05 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/02/13 21:52:44 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:06:53 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,17 @@ template <class T> T &Array<T>::operator[](int i) {
    return number[i];
 }
 
+template <class T> const T &Array<T>::operator[](int i) const {
+     try{
+          if (i > s )
+            throw(i);
+    }
+       catch( int i){
+        std::cout << i << " is out of bounds\n";
+    }
+   return number[i];
+}
+
 template <class T> Array<T>::Array(const Array &obj){
     if (this != &obj) {
         number = new T (*obj.number);
@@ -50,7 +61,7 @@ template <class T> Array<T> &Array<T>::operator=(const Array<T> &a)
         number = new T(*a.number);
     }
     s = a.s;
-    number = a.number;
+    *number = *a.number;
     return *this; 
 }
 
@@ -60,5 +71,6 @@ template <class T> int  Array<T>::size() const
 }
 
 template <class T> Array<T>::~Array(){
+    delete number;
     std::cout << "destructor called\n";
 }
