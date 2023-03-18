@@ -22,4 +22,9 @@ struct date_ln
     int v;
 };
 
+int check_date_utl(size_t i, int if_d, std::string dt);
+bool check_date(std::string dt);
+int check_nb(std::string nb);
+pair *check_line(std::string line);
+bool valide_date(std::string date);
 #endif
