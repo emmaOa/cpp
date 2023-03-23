@@ -32,69 +32,38 @@ int main(int arc, char *arv[])
     {
         while (arv[1][i] && arv[1][i] == ' ')
             i++;
-        if (isdigit(arv[1][i]))
+        if (!arv[1][i])
         {
-            stc.push(arv[1][i] - '0');
+            // std::cout << "----->> "<< arv[1][i] << std::endl;
+            break;
         }
-        else if (is_opr(arv[1][i]) == 1)
+        if (isdigit(arv[1][i]) || is_opr(arv[1][i]) == 1)
         {
-            op.push(arv[1][i]);
-            if (stc.size() > 1)
-            {
-                a = stc.top();
-                stc.pop();
-                b = stc.top();
-                stc.pop();
-            // std::cout << a << ' ' << b << std::endl;
-            // std::cout << opr(b, a, arv[1][i]) << std::endl;
-                stc.push(opr(b, a, op.top()));
+            if (isdigit(arv[1][i]))
+                stc.push(arv[1][i] - '0');
+            else{
+                op.push(arv[1][i]);
+                if (stc.size() == 2)
+                {
+                    a = stc.top();
+                    stc.pop();
+                    b = stc.top();
+                    stc.pop();
+                    // std::cout << b << ' ' << a << std::endl;
+                    stc.push(opr(b, a, op.top()));
+                    op.pop();
+                }
             }
         }
         else
         {
+            // std::cout << arv[1][i - 1] << std::endl;
             std::cout << "Error\n";
             return 1;
         }
         i++;
     }
-    std::cout << stc.top() << std::endl;
+    if (stc.size() > 0)
+        std::cout << stc.top() << std::endl;
     return 0;
 }
-
-// int main(int arc, char *arv[])
-// {
-//     std::stack<int> nb;
-//     std::stack<char> op;
-//     int i = 0;
-//     int a, b;
-//     if (arc != 2)
-//         return 1;
-//     while (arv[1][i])
-//     {
-//         while (arv[1][i] && arv[1][i] == ' ')
-//             i++;
-//         if (isdigit(arv[1][i]))
-//             nb.push(arv[1][i] - '0');
-//         else if (is_opr(arv[1][i]) == 1)
-//             op.push(arv[1][i]);
-//         else
-//         {
-//             std::cout << "Error\n";
-//             return 1;
-//         }
-//         i++;
-//     }
-//     while (!op.empty())
-//     {
-//         a = nb.top();
-//         nb.pop();
-//         b = nb.top();
-//         nb.pop();
-//             std::cout << a << ' ' << b << std::endl;
-//             std::cout << opr(b, a, op.top()) << std::endl;
-//         nb.push(opr(b, a, op.top()));
-//         op.pop();
-//     }
-//     std::cout << nb.top() << std::endl;
-//     return 0;
-// }
