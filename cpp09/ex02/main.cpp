@@ -12,32 +12,71 @@
 
 #include "PmergeMe.hpp"
 
-// void mrg(std::vector<int>& vc, int b, int m, int l)
-// {
-    
-// }
+void insrt(std::vector<int>& vc, int b, int l)
+{
+    for (int i = b; i < l; i++)
+    {
+        int j = i;
+        int tmp = vc[i];
+        while ((j > b) && (tmp < vc[j - 1]))
+        {
+            vc[j] = vc[j - 1];
+            j--;
+        }
+        vc[j] = tmp;
+    }
+}
 
-// void insrt(std::vector<int>& vc, int b, int l)
-// {
-    
-// }
+void mrg(std::vector<int>& vc, std::vector<int>& vc2, int b, int m, int l)
+{
+    int i = b;
+    int k = b;
+    int j = m;
 
-void mrgsrt(std::vector<int>& vc, int b, int l)
+    while ((i < m) && (j < l))
+    {
+        if (vc[i] < vc[j])
+        {
+            vc2[k] = vc[i];
+            i++;
+        }
+        else
+        {
+            vc2[k] = vc[j];
+            j++; 
+        }
+        k++;
+    }
+
+    while (j < l)
+    {
+        vc2[k] = vc[j];
+        k++;
+        j++;
+    }
+
+    while (i <= m)
+    {
+        vc2[k] = vc[i];
+        k++;
+        i++;
+    }
+
+    for (i = b; i < l; i++)
+        vc[i] = vc2[i];
+}
+
+void mrgsrt(std::vector<int>& vc, std::vector<int>& vc2, int b, int l)
 {
     if (l - b <= 5)
-    {
-        std::cout << "hi\n";
-        // insrt(vc, b, l);        
-    }
+        insrt(vc, b, l);
     else
     {
         int m = (b + l) / 2;
-        mrgsrt(vc, b, m);
-        mrgsrt(vc, m + 1, l);
-        std::cout << "no\n";
-        // mrg(vc, b, m + 1 , l);
-    }
-    
+        mrgsrt(vc, vc2, b, m);
+        mrgsrt(vc, vc2, m , l);
+        mrg(vc, vc2, b, m , l);
+    } 
 }
 
 int main(int arc, char *arv[])
@@ -47,9 +86,10 @@ int main(int arc, char *arv[])
     int len = arc - 1;
     int nb;
     
-    std::vector<int> v;
+    std::vector<int> v, v2;
     std::vector<int>::iterator it;
     v.reserve(arc);
+    v2.reserve(arc);
     for (int i = 1; i < arc; i++)
     {
         nb = atoi(arv[i]);
@@ -62,8 +102,13 @@ int main(int arc, char *arv[])
     }
     for (it = v.begin(); it < v.end(); ++it)
     {
-        std::cout << *it << ", ";
+        std::cout << *it << " ";
     }
     std::cout << "\n";
-    mrgsrt(v, 0, len);
+    mrgsrt(v, v2, 0, len);
+    for (it = v.begin(); it < v.end(); ++it)
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << "\n";
 }
