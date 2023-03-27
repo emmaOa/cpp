@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:50:43 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/03/18 01:46:06 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/03/27 00:43:41 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int main(int arc, char *arv[])
     std::map<std::string, float>::iterator it;
     std::map<std::string, float>::iterator up;
     pair *pr2;
-    int p;
     int dt_vl = 0;
     std::string f_line = "date | value";
     std::ifstream file;
@@ -73,27 +72,20 @@ int main(int arc, char *arv[])
     while (getline(file, line2))
     {
         if (!(line2 == f_line && dt_vl == 0))
-        {   
-            p = 0;
+        {
             pr2 = check_line(line2);
             if (pr2->valide == 1)
             {
                 if (valide_date(pr2->key) == true && check_date(pr2->key) == true)
                 {
-                    for(it = mp.begin(); it != mp.end(); it++)
-                    {
-                        if (pr2->key == (it->first + sp))
-                        {
-                            std::cout << pr2->key << " => " << pr2->value << " = " << pr2->value * it->second << "\n";
-                            p = 1;
-                        }
-                    }
-                    if (p == 0)
-                    {
-                        pr2->key.resize(pr2->key.length() - 1);
-                        up = mp.upper_bound(pr2->key);
-                        std::cout << pr2->key << " => " << pr2->value << " = " << pr2->value * up->second << "\n";
-                    }
+                    up = mp.upper_bound(pr2->key);
+                    if (up != mp.begin())
+                        up--;
+                    std::cout << pr2->key << " => " << pr2->value << " = " << pr2->value * up->second << "\n";
+                }
+                else
+                {
+                    std::cout << "Error: bad input\n";
                 }
             }
         }

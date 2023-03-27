@@ -8,4 +8,7 @@
 #include <cmath>
 #include <stack>
 
+int is_opr(char op);
+int opr(int a, int b, char op);
+
 # endif
