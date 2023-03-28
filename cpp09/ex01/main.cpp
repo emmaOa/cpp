@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 20:25:36 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/03/27 00:30:51 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:52:43 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,11 @@ int main(int arc, char *arv[])
                         stc.pop();
                         b = stc.top();
                         stc.pop();
-                        std::cout << b << ' ' << a << std::endl;
+                        if (a == 0 && op.top() == '/')
+                        {
+                            std::cout << "Error\n";
+                            return 1;
+                        }
                         stc.push(opr(b, a, op.top()));
                         op.pop();
                     }

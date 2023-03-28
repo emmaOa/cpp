@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:50:36 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/03/18 01:45:41 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:27:27 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int check_date_utl(size_t i, int if_d, std::string dt)
         {
             if  ((dt[i] < '0' || dt[i] > '9') && (dt[i] != ' ' && i == dt.length()))
             {
-                std::cout << "Error: bad input [d : 8]=> " << dt << std::endl;
+                std::cout << "Error: bad input => " << dt << std::endl;
                 return 0;
             }
             i++;
@@ -30,17 +30,12 @@ int check_date_utl(size_t i, int if_d, std::string dt)
     }
     while (i < dt.length() && (dt[i] != '-'))
     {
-        if ((dt[i] < '0' || dt[i] > '9'))
-        {
-            std::cout << "Error: bad input [d : 1]=> " << dt << std::endl;
-            return 0;
-        }
         str += dt[i];
         i++;
     }
     if (dt[i] != '-')
     {
-        std::cout << "Error: bad input [d : 2]=> " << dt << std::endl;
+        std::cout << "Error: bad input => " << dt << std::endl;
         return 0;
     }
     return i;
@@ -72,7 +67,8 @@ int check_nb(std::string nb)
     {
         while (nb[i] == ' ' || nb[i] == '\t')
             i++;
-        
+        if (nb[i] == '+')
+            i++;
         if (nb[i] < '0' || nb[i] > '9')
         {
             if (nb[i] == '.' || nb[i] == ',')
@@ -104,35 +100,34 @@ pair *check_line(std::string line)
     }
     if (i >= line.length())
     {
-        std::cout << "Error: bad input[3] => " << line << std::endl;
+        std::cout << "Error: bad input => " << line << std::endl;
         return pr;
     }
     i++;
     while (line[i])
     {
-        nb += line[i];
+        if (line[i] == ',')
+           nb += '.';
+        else
+            nb += line[i];
         i++;
     }
     if(check_nb(nb) == 1)
     {
-        std::cout << "Error: bad input[1] => " << line << std::endl;
+        std::cout << "Error: bad input => " << line << std::endl;
         return pr;
     }
     try{
         pr->value = atof(nb.c_str());
     }
     catch (const std::invalid_argument & e) {
-        std::cout << "Error: bad input [2] => " << line << std::endl;
+        std::cout << "Error: bad input => " << line << std::endl;
         return pr;
     }
 
     catch (const std::out_of_range & e) {
         std::cout << "Error: too large a number." << "\n";
         return pr;
-    }
-    if (pr->value / line.length() != 0)
-    {
-        
     }
     if (pr->value < 0 || pr->value > 1000)
     {
@@ -155,5 +150,22 @@ bool valide_date(std::string date)
     char* endptr = strptime(date.c_str(), format, &time);
     if (endptr == NULL || *endptr != '\0')
         return false;
+    if ((time.tm_year + 1900 < 2009 || time.tm_year + 1900 > 2022) || time.tm_mday < 1)
+        return false;
+    for (int i = 1; i < 13; i++)
+    {
+        if ((time.tm_mon + 1) == 2)
+        {
+            if ((time.tm_year + 1900 != 2012 && time.tm_year + 1900 != 2016 && time.tm_year + 1900 != 2020) && time.tm_mday > 28)
+                return false;
+        }
+        else if (((time.tm_mon + 1) % 2) != 0)
+        {
+            if (time.tm_mday > 30)
+                return false;
+        }
+        if (time.tm_year + 1900 == 2009 && time.tm_mon + 1 == 1 && time.tm_mday < 2)
+            return false;
+    }
     return true;
 }

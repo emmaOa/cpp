@@ -6,7 +6,7 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:50:43 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/03/27 00:43:41 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:25:05 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main(int arc, char *arv[])
             s += line1[i];
             i++;
         }
-        pr.value = std::stof(s);
+        pr.value = strtod(s.c_str(), NULL);
         s.clear();
         mp[pr.key] = pr.value;
         pr.key.clear();
@@ -63,10 +63,8 @@ int main(int arc, char *arv[])
     std::string f_line = "date | value";
     std::ifstream file;
     file.open(arv[1]);
-    if (!file.is_open()){
-        std::cout << "Open failed" << std::endl;
-        return 1;
-    }
+    if (!file.is_open())
+        file.open(arv[1], std::ios_base::in | std::ios_base::out | std::ios_base::trunc);
     std::string sp = " ";
     std::string line2;
     while (getline(file, line2))

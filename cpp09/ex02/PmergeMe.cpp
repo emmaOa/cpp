@@ -6,11 +6,27 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 20:50:01 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/03/26 17:00:55 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:04:20 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+int check_nb(std::string nb)
+{
+    size_t i = 0;
+    
+    while (i < nb.length())
+    {
+        if (nb[i] == '+')
+            i++;
+        if (nb[i] < '0' || nb[i] > '9')
+            return 1;
+        else
+            i++;
+    }
+    return 0;
+}
 
 void insrt(std::vector<int>& vc, int b, int l)
 {

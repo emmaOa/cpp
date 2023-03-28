@@ -17,5 +17,6 @@ void mrgsrt(std::vector<int>& vc, int b, int l);
 void mrgsrt_D(std::deque<int>& d, int b, int l);
 void insrt_D(std::deque<int>& d, int b, int l);
 void mrg_D(std::deque<int>& d, int b, int m, int l);
+int check_nb(std::string nb);
 
 # endif

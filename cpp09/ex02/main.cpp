@@ -6,19 +6,11 @@
 /*   By: iouazzan <iouazzan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 10:50:46 by iouazzan          #+#    #+#             */
-/*   Updated: 2023/03/26 18:01:23 by iouazzan         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:04:11 by iouazzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
-std::string conversion(double counts)
-{
-  std::stringstream ss;
-  ss.precision(10);
-  ss << std::fixed << counts;
-  return ss.str();
-}
 
 int main(int arc, char *arv[])
 {
@@ -30,6 +22,11 @@ int main(int arc, char *arv[])
 
     for (int i = 1; i < arc; i++)
     {
+        if (check_nb(arv[i]) == 1)
+        {
+            std::cout << "Error\n";
+            return 1;
+        }
        int nb = atoi(arv[i]);
         if (nb < 0)
         {

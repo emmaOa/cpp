@@ -5,12 +5,13 @@
 # include <stdexcept>
 # include <fstream>
 # include <ctime>
+# include <cstdlib>
 #include <map>
 
 struct pair
 {
     std::string key;
-    float value;
+    double value;
     int valide;
 };
 
